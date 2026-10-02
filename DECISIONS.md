@@ -18,7 +18,7 @@ tant qu'elles ne sont pas remplacées.
 
 | Valeur | Où | Valeur actuelle |
 | --- | --- | --- |
-| Numéro WhatsApp | `config/site.ts` → `contact.whatsapp` (+ `whatsappDisplay`) | +237 671 34 37 71 |
+| Lien WhatsApp direct | `config/site.ts` → `contact.whatsappLink` | https://wa.me/message/DIZC3EZP4MHPN1 (le numéro n'est affiché nulle part) |
 | E-mail | `config/site.ts` → `contact.email` | raoulnobou@gmail.com |
 | Photo du fondateur | `public/brand/founder.webp` (900×1350, fond transparent) | fournie le 2 octobre 2026 |
 
@@ -48,6 +48,12 @@ Les réseaux sociaux ne sont pas encore disponibles : ils restent masqués dans 
   automatiquement à Disponible dès que `links.quickSign` est renseigné dans `config/site.ts`.
 - Seul le statut « Bientôt » est signalé sur les cartes. Le statut complet est affiché en
   haut de chaque page de branche.
+
+### WhatsApp
+- Tous les boutons utilisent le lien court `wa.me/message/DIZC3EZP4MHPN1`. Ce type de lien
+  ouvre la conversation avec le message prérempli défini dans WhatsApp Business : les
+  messages propres à chaque page (branche, démo, formulaire) ne s'appliquent pas.
+  Pour les retrouver, remplacer le lien par `https://wa.me/<numéro>` dans `config/site.ts`.
 
 ### Contenu
 - **Organisation des textes :** `content/fr.ts` et `content/en.ts` contiennent les textes

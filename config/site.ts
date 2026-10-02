@@ -20,10 +20,11 @@ export const site = {
   ).replace(/\/$/, ''),
 
   contact: {
-    /** Format international sans "+" ni espaces, ex. 2376XXXXXXXX. */
-    whatsapp: '237671343771',
-    /** Affichage lisible du numéro. */
-    whatsappDisplay: '+237 671 34 37 71',
+    /**
+     * Lien WhatsApp direct (lien court "wa.me/message/…" fourni par AXIONA).
+     * Le numéro n'est volontairement affiché nulle part sur le site.
+     */
+    whatsappLink: 'https://wa.me/message/DIZC3EZP4MHPN1',
     email: 'raoulnobou@gmail.com',
     hours: { fr: 'TODO_HORAIRES', en: 'TODO_HOURS' },
   },
@@ -52,13 +53,15 @@ export const isTodo = (value: string) => !value || value.startsWith('TODO_');
 export const activeSocials = site.socials.filter((s) => !isTodo(s.href));
 
 /**
- * Lien WhatsApp direct avec message prérempli.
- * Tant que le numéro n'est pas renseigné, renvoie null : les boutons
- * redirigent alors vers la page contact (voir components/WhatsAppLink.tsx).
+ * Lien WhatsApp utilisé par tous les boutons.
+ * Les liens courts "wa.me/message/…" ouvrent la conversation avec le message
+ * défini dans WhatsApp Business : le texte passé ici n'est donc utilisé que si
+ * le lien est un lien classique "wa.me/<numéro>".
+ * Lien vide ou TODO_ : renvoie null, les boutons mènent alors à la page contact.
  */
 export function whatsappUrl(message?: string): string | null {
-  if (isTodo(site.contact.whatsapp)) return null;
-  const number = site.contact.whatsapp.replace(/\D/g, '');
-  const text = message ? `?text=${encodeURIComponent(message)}` : '';
-  return `https://wa.me/${number}${text}`;
+  const link = site.contact.whatsappLink;
+  if (isTodo(link)) return null;
+  if (link.includes('/message/') || !message) return link;
+  return `${link}${link.includes('?') ? '&' : '?'}text=${encodeURIComponent(message)}`;
 }

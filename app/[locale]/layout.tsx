@@ -76,12 +76,10 @@ export default async function LocaleLayout({
     founder: { '@type': 'Person', name: site.founder, jobTitle: locale === 'fr' ? 'Fondateur & CEO' : 'Founder & CEO' },
     address: { '@type': 'PostalAddress', addressLocality: site.city, addressRegion: site.region, addressCountry: site.countryCode },
     email: site.contact.email,
-    telephone: `+${site.contact.whatsapp}`,
     contactPoint: {
       '@type': 'ContactPoint',
       contactType: 'customer service',
-      telephone: `+${site.contact.whatsapp}`,
-      email: site.contact.email,
+        email: site.contact.email,
       availableLanguage: ['French', 'English'],
     },
     areaServed: ['CM', 'Africa'],

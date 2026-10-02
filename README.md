@@ -30,7 +30,7 @@ npm run typecheck  # TypeScript seul
 | Les textes du site en **français** | `content/fr.ts` |
 | Les textes du site en **anglais** | `content/en.ts` (même structure que `fr.ts`, vérifiée par TypeScript) |
 | Une **branche** (nom, ligne descriptive, mots-clés, FAQ, tarifs, statut…) en FR **et** EN | `content/branches.ts` |
-| Numéro WhatsApp, e-mail, horaires, réseaux, lien boutique Chariow, lien QuickSign, photo du fondateur | `config/site.ts` |
+| Lien WhatsApp, e-mail, horaires, réseaux, lien boutique Chariow, lien QuickSign, photo du fondateur | `config/site.ts` |
 | Couleurs, typographie, boutons | `app/globals.css` (tokens `--nuit`, `--ocean`, `--cyan`, `--brume`, `--blanc`, `--encre`) |
 | Logo, favicon, image de partage | `public/brand/` |
 
@@ -41,8 +41,8 @@ dans `components/BranchIcon.tsx` et son identifiant dans le type `BranchSlug`.
 
 ### Valeurs à compléter
 
-Toutes les valeurs `TODO_…` sont listées dans [DECISIONS.md](./DECISIONS.md). Tant que le
-numéro WhatsApp n'est pas renseigné, les boutons WhatsApp mènent à la page contact.
+Toutes les valeurs `TODO_…` sont listées dans [DECISIONS.md](./DECISIONS.md). Les boutons
+WhatsApp utilisent le lien direct défini dans `config/site.ts` (`contact.whatsappLink`).
 
 ## Formulaire de contact
 
@@ -59,8 +59,7 @@ défini par `CONTACT_WEBHOOK_URL` (n8n, Make, Zapier…).
 
 - `CONTACT_WEBHOOK_SECRET` (facultatif) est envoyé dans l'en-tête `X-Axiona-Secret` pour que
   le webhook vérifie l'origine.
-- Sans webhook configuré, l'API répond 503 et le formulaire propose l'envoi sur WhatsApp
-  (le message est prérempli avec les champs saisis).
+- Sans webhook configuré, l'API répond 503 et le formulaire propose l'envoi sur WhatsApp.
 - Protections : validation côté serveur, champ pot de miel anti-robots, limite de 5 envois
   par IP toutes les 10 minutes.
 
