@@ -1,0 +1,345 @@
+@import 'tailwindcss';
+
+/* ------------------------------------------------------------------
+   Charte AXIONA — tirée du logo
+   ------------------------------------------------------------------ */
+:root {
+  --nuit: #0b2a4a;
+  --ocean: #14607f;
+  --cyan: #4fd1f0;
+  --brume: #eaf3f8;
+  --blanc: #ffffff;
+  --encre: #07182b;
+
+  /* Dérivés (contraste AA vérifié sur blanc) */
+  --ocean-fonce: #0f4d67;
+  --gris: #4a5d70; /* texte secondaire : 6.6:1 sur blanc */
+  --trait: #d6e4ee; /* bordures fines */
+  --cyan-pale: #d9f5fc;
+
+  --degrade: linear-gradient(35deg, var(--nuit) 0%, var(--ocean) 55%, var(--cyan) 100%);
+  --ombre-douce: 0 1px 2px rgb(11 42 74 / 0.06), 0 8px 24px -12px rgb(11 42 74 / 0.18);
+  --ombre-haute: 0 2px 4px rgb(11 42 74 / 0.06), 0 24px 48px -20px rgb(11 42 74 / 0.32);
+}
+
+@theme inline {
+  --color-nuit: var(--nuit);
+  --color-ocean: var(--ocean);
+  --color-ocean-fonce: var(--ocean-fonce);
+  --color-cyan: var(--cyan);
+  --color-cyan-pale: var(--cyan-pale);
+  --color-brume: var(--brume);
+  --color-blanc: var(--blanc);
+  --color-encre: var(--encre);
+  --color-gris: var(--gris);
+  --color-trait: var(--trait);
+
+  --font-display: var(--font-sora), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-instrument), ui-sans-serif, system-ui, sans-serif;
+
+  --shadow-douce: var(--ombre-douce);
+  --shadow-haute: var(--ombre-haute);
+
+  --radius-card-lg: 1.75rem;
+  --radius-card: 1.25rem;
+  --radius-card-sm: 0.875rem;
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-padding-top: 5.5rem;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+  body {
+    background: var(--blanc);
+    color: var(--encre);
+    font-family: var(--font-sans);
+    font-size: 1.0625rem;
+    line-height: 1.65;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    color: var(--nuit);
+    font-weight: 650;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    text-wrap: balance;
+  }
+  p {
+    text-wrap: pretty;
+  }
+  ::selection {
+    background: var(--cyan-pale);
+    color: var(--nuit);
+  }
+  :focus-visible {
+    outline: 3px solid var(--cyan);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+  .on-dark :focus-visible {
+    outline-color: var(--cyan);
+  }
+}
+
+@layer components {
+  .container-ax {
+    width: 100%;
+    max-width: 76rem;
+    margin-inline: auto;
+    padding-inline: 1.25rem;
+  }
+  @media (min-width: 768px) {
+    .container-ax {
+      padding-inline: 2rem;
+    }
+  }
+
+  .prose-ax {
+    max-width: 65ch;
+  }
+
+  /* Titres de section : échelle nette */
+  .h-display {
+    font-size: clamp(2.35rem, 6.2vw, 4.4rem);
+    font-weight: 700;
+    letter-spacing: -0.035em;
+    line-height: 1.04;
+  }
+  .h-section {
+    font-size: clamp(1.75rem, 3.6vw, 2.6rem);
+    letter-spacing: -0.028em;
+  }
+  .h-card {
+    font-size: 1.2rem;
+    letter-spacing: -0.015em;
+  }
+  .lead {
+    font-size: clamp(1.075rem, 1.6vw, 1.25rem);
+    line-height: 1.6;
+    color: var(--gris);
+  }
+
+  /* Boutons */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    min-height: 3rem;
+    padding: 0.75rem 1.4rem;
+    border-radius: 999px;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 0.98rem;
+    letter-spacing: -0.005em;
+    line-height: 1.2;
+    transition:
+      background-color 0.2s ease,
+      color 0.2s ease,
+      box-shadow 0.25s ease,
+      transform 0.2s ease;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .btn:active {
+    transform: translateY(1px);
+  }
+  .btn-primary {
+    background: var(--ocean);
+    color: var(--blanc);
+    box-shadow: 0 10px 24px -12px rgb(20 96 127 / 0.7);
+  }
+  .btn-primary:hover {
+    background: var(--ocean-fonce);
+    box-shadow: 0 14px 28px -12px rgb(20 96 127 / 0.8);
+  }
+  .btn-ghost {
+    background: rgb(255 255 255 / 0.7);
+    color: var(--nuit);
+    box-shadow: inset 0 0 0 1.5px var(--trait);
+  }
+  .btn-ghost:hover {
+    box-shadow: inset 0 0 0 1.5px var(--ocean);
+    background: var(--blanc);
+  }
+  .btn-light {
+    background: var(--blanc);
+    color: var(--nuit);
+  }
+  .btn-light:hover {
+    background: var(--cyan-pale);
+  }
+  .btn-sm {
+    min-height: 2.5rem;
+    padding: 0.5rem 1.05rem;
+    font-size: 0.9rem;
+  }
+
+  .link-ax {
+    color: var(--ocean);
+    font-weight: 500;
+    text-decoration: underline;
+    text-decoration-color: rgb(20 96 127 / 0.3);
+    text-underline-offset: 0.22em;
+    text-decoration-thickness: 1.5px;
+    transition: text-decoration-color 0.2s ease;
+  }
+  .link-ax:hover {
+    text-decoration-color: var(--ocean);
+  }
+
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.7rem;
+    border-radius: 999px;
+    background: var(--brume);
+    color: var(--nuit);
+    font-size: 0.82rem;
+    font-weight: 500;
+    line-height: 1.4;
+  }
+
+  /* Champs de formulaire */
+  .field {
+    width: 100%;
+    min-height: 3rem;
+    padding: 0.75rem 1rem;
+    border-radius: 0.875rem;
+    background: var(--blanc);
+    color: var(--encre);
+    border: 1.5px solid var(--trait);
+    font-size: 1rem;
+    transition:
+      border-color 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+  .field::placeholder {
+    color: #6b7d8e;
+  }
+  .field:hover {
+    border-color: #b6cddd;
+  }
+  .field:focus {
+    outline: none;
+    border-color: var(--ocean);
+    box-shadow: 0 0 0 4px rgb(79 209 240 / 0.3);
+  }
+  .field[aria-invalid='true'] {
+    border-color: #b42318;
+  }
+
+  /* Fond "lumière" : halos très légers + fines lignes */
+  .bg-lumiere {
+    background:
+      radial-gradient(60rem 30rem at 85% -10%, rgb(79 209 240 / 0.14), transparent 60%),
+      radial-gradient(40rem 26rem at -10% 110%, rgb(20 96 127 / 0.08), transparent 60%),
+      var(--blanc);
+  }
+  .bg-brume {
+    background: var(--brume);
+  }
+}
+
+@keyframes ax-pulse {
+  0%,
+  100% {
+    opacity: 0.85;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.12);
+  }
+}
+.spark-pulse {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: ax-pulse 3.6s ease-in-out infinite;
+}
+
+@keyframes ax-dash {
+  to {
+    stroke-dashoffset: -40;
+  }
+}
+.flow-dash {
+  animation: ax-dash 1.6s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* ------------------------------------------------------------------
+   Hero : un seul moment orchestré (lumière → symbole → slogan → boutons)
+   En CSS pur : s'affiche même avant le chargement du JavaScript.
+   ------------------------------------------------------------------ */
+@keyframes trail-draw {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes symbol-in {
+  from {
+    opacity: 0;
+    transform: translate(-14px, 14px) scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.hero-trail {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: trail-draw 1.15s cubic-bezier(0.55, 0, 0.2, 1) forwards;
+  animation-delay: var(--d, 0s);
+}
+.hero-symbol {
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: 40% 60%;
+  animation: symbol-in 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) 0.4s forwards;
+}
+.hero-in {
+  opacity: 0;
+  animation: fade-up 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+  animation-delay: var(--d, 0s);
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-trail,
+  .hero-symbol,
+  .hero-in {
+    animation-delay: 0s !important;
+  }
+}

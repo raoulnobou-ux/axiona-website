@@ -1,0 +1,20 @@
+# AXIONA Global AI Technologies
+
+> Entreprise technologique basée à Buea, Cameroun. Fondateur & CEO : Nobou Dzoda Raoul Jospin.
+> Solutions d'IA, d'automatisation et de digital pour les entreprises du Cameroun et d'Afrique.
+> Slogan : « Là où l'IA rencontre l'avenir. » / "Where AI meets the future."
+
+## Branches
+- [AXIONA AI](/fr/branches/ai): agents IA, chatbots, Voice AI, solutions IA
+- [AXIONA Automation](/fr/branches/automation): n8n, workflows, automatisation, intégrations
+- [AXIONA Software](/fr/branches/software): SaaS, applications, QuickSign, outils professionnels
+- [AXIONA Digital](/fr/branches/digital): ebooks, templates, prompts, formations
+- [AXIONA Academy](/fr/branches/academy): formation, coaching, ateliers IA & digital
+- [AXIONA Creative](/fr/branches/creative): design, branding, contenu visuel
+- [AXIONA Marketing](/fr/branches/marketing): publicité, acquisition, prospection, conversion
+- [AXIONA Consulting](/fr/branches/consulting): stratégie IA, transformation digitale, conseil
+
+## Pages
+- [Accueil](/fr) · [English](/en)
+- [À propos](/fr/a-propos) · [About](/en/about)
+- [Contact (WhatsApp et formulaire)](/fr/contact)
