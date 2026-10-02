@@ -36,6 +36,7 @@ export default async function ContactPage({ params }: Props) {
           <div className="mt-10 rounded-card-lg bg-nuit p-7 text-white">
             <p className="font-display text-lg font-semibold">{c.whatsappTitle}</p>
             <p className="mt-1 text-white/75">{c.whatsappText}</p>
+            <p className="mt-3 font-display text-xl font-semibold tracking-wide">{site.contact.whatsappDisplay}</p>
             <WhatsAppLink message={t.common.whatsappMessage} className="btn btn-light mt-6 w-full sm:w-auto">
               <WhatsAppIcon />
               {t.common.whatsapp}

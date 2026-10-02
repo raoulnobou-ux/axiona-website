@@ -69,7 +69,7 @@ export function Footer({ locale }: { locale: Locale }) {
                   className="inline-flex items-center gap-1.5 text-gris transition-colors hover:text-ocean"
                 >
                   <WhatsAppIcon className="h-4 w-4" />
-                  WhatsApp
+                  {site.contact.whatsappDisplay}
                 </WhatsAppLink>
               </li>
               <li className="break-all text-gris">

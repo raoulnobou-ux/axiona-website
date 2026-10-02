@@ -21,8 +21,10 @@ export const site = {
 
   contact: {
     /** Format international sans "+" ni espaces, ex. 2376XXXXXXXX. */
-    whatsapp: 'TODO_WHATSAPP',
-    email: 'TODO_EMAIL',
+    whatsapp: '237671343771',
+    /** Affichage lisible du numéro. */
+    whatsappDisplay: '+237 671 34 37 71',
+    email: 'raoulnobou@gmail.com',
     hours: { fr: 'TODO_HORAIRES', en: 'TODO_HOURS' },
   },
 
@@ -42,7 +44,7 @@ export const site = {
   ],
 
   /** Photo du fondateur, ex. "/brand/founder.jpg". TODO_PHOTO = visuel de remplacement. */
-  founderPhoto: 'TODO_PHOTO',
+  founderPhoto: '/brand/founder.webp',
 } as const;
 
 export const isTodo = (value: string) => !value || value.startsWith('TODO_');

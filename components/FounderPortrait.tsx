@@ -9,8 +9,21 @@ import { Symbol } from './Symbol';
 export function FounderPortrait({ alt, placeholderAlt, className = '' }: { alt: string; placeholderAlt: string; className?: string }) {
   if (!isTodo(site.founderPhoto)) {
     return (
-      <div className={`relative overflow-hidden rounded-card-lg bg-brume ${className}`}>
-        <Image src={site.founderPhoto} alt={alt} fill sizes="(min-width: 1024px) 28rem, 90vw" className="object-cover" />
+      <div
+        className={`relative overflow-hidden rounded-card-lg bg-[linear-gradient(160deg,#EAF3F8_0%,#ffffff_45%,#d9f5fc_100%)] shadow-douce ring-1 ring-trait/70 ${className}`}
+      >
+        <Lines />
+        <Image
+          src={site.founderPhoto}
+          alt={alt}
+          fill
+          sizes="(min-width: 768px) 28rem, 90vw"
+          className="object-cover object-top"
+        />
+        <span
+          aria-hidden="true"
+          className="absolute bottom-5 right-5 h-3 w-3 rounded-full bg-cyan shadow-[0_0_16px_4px_rgb(79_209_240/0.6)]"
+        />
       </div>
     );
   }
@@ -20,18 +33,7 @@ export function FounderPortrait({ alt, placeholderAlt, className = '' }: { alt: 
       aria-label={placeholderAlt}
       className={`relative overflow-hidden rounded-card-lg bg-[linear-gradient(160deg,#EAF3F8_0%,#ffffff_45%,#d9f5fc_100%)] ${className}`}
     >
-      <svg viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice" className="absolute inset-0 h-full w-full" aria-hidden="true">
-        {[0, 1, 2, 3, 4].map((i) => (
-          <path
-            key={i}
-            d={`M-40 ${520 - i * 26} C 120 ${500 - i * 30}, 230 ${380 - i * 30}, 440 ${90 - i * 34}`}
-            fill="none"
-            stroke="#4FD1F0"
-            strokeOpacity={0.5 - i * 0.08}
-            strokeWidth={i === 0 ? 1.4 : 0.8}
-          />
-        ))}
-      </svg>
+      <Lines />
       <div className="absolute inset-0 flex items-center justify-center">
         <Symbol className="h-[42%] w-auto drop-shadow-[0_18px_30px_rgba(11,42,74,0.18)]" />
       </div>
@@ -39,5 +41,22 @@ export function FounderPortrait({ alt, placeholderAlt, className = '' }: { alt: 
         {site.founder}
       </span>
     </div>
+  );
+}
+
+function Lines() {
+  return (
+    <svg viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice" className="absolute inset-0 h-full w-full" aria-hidden="true">
+      {[0, 1, 2, 3, 4].map((i) => (
+        <path
+          key={i}
+          d={`M-40 ${520 - i * 26} C 120 ${500 - i * 30}, 230 ${380 - i * 30}, 440 ${90 - i * 34}`}
+          fill="none"
+          stroke="#4FD1F0"
+          strokeOpacity={0.5 - i * 0.08}
+          strokeWidth={i === 0 ? 1.4 : 0.8}
+        />
+      ))}
+    </svg>
   );
 }

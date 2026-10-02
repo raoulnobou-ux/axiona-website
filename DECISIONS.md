@@ -7,15 +7,23 @@ tant qu'elles ne sont pas remplacées.
 
 | Valeur | Où la modifier | Effet tant qu'elle n'est pas renseignée |
 | --- | --- | --- |
-| `TODO_WHATSAPP` : numéro WhatsApp au format international sans `+` (ex. `2376XXXXXXXX`) | `config/site.ts` → `contact.whatsapp` | Les boutons WhatsApp mènent à la page contact |
-| `TODO_EMAIL` | `config/site.ts` → `contact.email` | Affiché tel quel (pied de page, contact, mentions légales) |
 | `TODO_HORAIRES` / `TODO_HOURS` | `config/site.ts` → `contact.hours` | Affiché tel quel sur la page contact |
-| `TODO_PHOTO` : photo du fondateur (ex. `/brand/founder.jpg`, format portrait 4:5) | `config/site.ts` → `founderPhoto` | Visuel de remplacement (symbole AX + lignes de lumière) |
 | `TODO_FACEBOOK`, `TODO_LINKEDIN`, `TODO_INSTAGRAM`, `TODO_TIKTOK`, `TODO_YOUTUBE` | `config/site.ts` → `socials` | Réseau masqué ; « Nos réseaux arrivent bientôt » si aucun n'est renseigné |
 | `TODO_RCCM` : numéro d'immatriculation | `content/fr.ts` et `content/en.ts` → `legal` | Affiché tel quel dans les mentions légales |
 | Lien public QuickSign | `config/site.ts` → `links.quickSign` | Branche Software en « Bientôt », bouton QuickSign remplacé par « Bientôt disponible » |
 | `CONTACT_WEBHOOK_URL` (+ `CONTACT_WEBHOOK_SECRET` facultatif) | Variables d'environnement Vercel | Le formulaire affiche une erreur et propose l'envoi sur WhatsApp |
 | `NEXT_PUBLIC_SITE_URL` | Variables d'environnement Vercel | Sur Vercel, l'URL de production du projet est utilisée à défaut |
+
+### Déjà renseigné
+
+| Valeur | Où | Valeur actuelle |
+| --- | --- | --- |
+| Numéro WhatsApp | `config/site.ts` → `contact.whatsapp` (+ `whatsappDisplay`) | +237 671 34 37 71 |
+| E-mail | `config/site.ts` → `contact.email` | raoulnobou@gmail.com |
+| Photo du fondateur | `public/brand/founder.webp` (900×1350, fond transparent) | fournie le 2 octobre 2026 |
+
+Les réseaux sociaux ne sont pas encore disponibles : ils restent masqués dans le pied de page
+(« Nos réseaux arrivent bientôt ») jusqu'à ce qu'un lien soit renseigné.
 
 ## Choix faits
 
