@@ -39,7 +39,7 @@ export function Footer({ locale }: { locale: Locale }) {
           </ul>
         </div>
 
-        <div className="grid grid-cols-2 gap-8 md:col-span-4">
+        <div className="grid gap-8 min-[420px]:grid-cols-2 md:col-span-4">
           <div>
             <h2 className="font-display text-sm font-semibold text-nuit">{t.footer.company}</h2>
             <ul className="mt-4 space-y-2.5 text-[0.95rem]">

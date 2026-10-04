@@ -9,7 +9,7 @@ import { branchSlugs, getBranch, getBranches } from '@/content/branches';
 import { site } from '@/config/site';
 import { localizedUrl, pageMetadata } from '@/lib/seo';
 import { BranchIcon } from '@/components/BranchIcon';
-import { FlowDiagram } from '@/components/FlowDiagram';
+import { SystemFlow } from '@/components/SystemFlow';
 import { ContactForm } from '@/components/ContactForm';
 import { Faq } from '@/components/Faq';
 import { Steps } from '@/components/Steps';
@@ -165,7 +165,7 @@ export default async function BranchPage({ params }: Props) {
               {tb.flow}
             </h2>
             <Reveal className="mt-10 rounded-card-lg bg-white/60 p-5 ring-1 ring-trait/70 sm:p-8 lg:p-10">
-              <FlowDiagram label={t.flagship.diagramLabel} hint={t.flagship.diagramHint} nodes={t.flagship.nodes} outcomes={t.flagship.outcomes} />
+              <SystemFlow label={t.flagship.diagramLabel} hint={t.flagship.diagramHint} nodes={t.flagship.nodes} outcomes={t.flagship.outcomes} />
             </Reveal>
             {branch.useCases && (
               <>

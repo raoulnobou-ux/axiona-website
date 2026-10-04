@@ -91,6 +91,58 @@ Les réseaux sociaux ne sont pas encore disponibles : ils restent masqués dans 
   la page À propos (doublon du visuel du fondateur) et une étiquette redondante au-dessus du
   titre de cette page.
 
+### Vidéo de démonstration (agent IA vocal)
+
+Source : vidéo fournie (576×1024, 2 min 22, verticale, sous-titres jaunes incrustés).
+Fichier web : `public/media/axiona-agent-vocal.mp4` + affiche `public/media/axiona-agent-vocal-poster.webp`.
+Recette complète : `scripts/video/` (cartes + filtre ffmpeg + commande).
+
+Nettoyage appliqué :
+- **Images d'illustration remplacées** (0:01–0:20) : cinq plans d'images génériques (photos de
+  banque d'images, une image de robot contraire à la charte) remplacés par des cartes AXIONA
+  (fond bleu nuit, lignes de lumière, icône sobre : client perdu, appels entrants, appel manqué,
+  client qui part ailleurs, symbole AX + onde vocale). Les **sous-titres d'origine sont conservés**
+  par-dessus (isolés par leur couleur jaune).
+- **Écran-titre** (0:28) : l'écran noir « Agent IA vocals… » (faute, effet barré) remplacé par
+  une carte « Démo en direct · Agent IA vocal · Prise de rendez-vous pour un salon de coiffure ».
+- **Transition « photos qui volent »** (1:32) remplacée par une image figée propre ; le son et
+  les sous-titres continuent.
+- **Fin** : coupe après « laisse-moi un message » (la formule « abonne-toi », propre aux
+  réseaux sociaux, est retirée), puis carte de fin AXIONA de 3 s.
+- **Image** : léger contraste/saturation, netteté. **Son** : coupe-bas 70 Hz, réduction de
+  bruit, compression douce, normalisation à −16 LUFS (était à −28 LUFS, très irrégulier).
+- **Aucune coupe dans la conversation avec l'agent** (0:29–1:32) : les temps de réponse
+  restent ceux de la démonstration réelle, pour ne pas la rendre plus rapide qu'elle n'est.
+- Encodage web : H.264 + AAC, `faststart` (lecture progressive), sans hausse de résolution.
+
+Intégration : le lecteur ne télécharge rien au chargement de la page (`preload="none"`,
+affiche en `<img loading="lazy">`) ; la vidéo démarre au clic, avec le son, contrôles natifs
+et plein écran. Elle est présentée comme une **démonstration AXIONA**, pas comme un témoignage
+client.
+
+Point à vérifier par AXIONA : la coupe de fin a été placée d'après le profil sonore et les
+sous-titres (pas d'écoute possible ici). Si une syllabe manque, ajuster `END` dans
+`scripts/video/build.sh`.
+
+### Améliorations « premium » (octobre 2026)
+- Accueil réorganisé : hero → bandeau → schéma système AI + Automation → démo vocale →
+  « Trouvez votre solution » → cas d'usage → écosystème des 8 branches → méthode →
+  Academy & Digital → fondateur → « Built in Buea » → appel final.
+- **Schéma système** (`components/SystemFlow.tsx`) : Client → WhatsApp / Appel → Agent IA →
+  Automatisation → Outils de l'entreprise → Résultat ; un point lumineux circule (CSS pur),
+  les résultats s'allument ensuite. Remplace l'ancien schéma en 4 étapes, y compris sur les
+  pages AI et Automation.
+- **Trouvez votre solution** : 8 besoins → 8 branches (une par besoin). Les émojis du brief
+  ont été remplacés par les icônes maison des branches, plus cohérentes avec la charte.
+- **Cas d'usage** : présentés explicitement comme des exemples (mention visible), jamais
+  comme des clients.
+- **Écosystème** : arbre AXIONA → AI + Automation (mis en avant, fond bleu nuit) + Software
+  → les cinq autres branches. Version verticale sur mobile.
+- **Built in Buea** : cercles concentriques Buea → Africa → World et coordonnées réelles de
+  Buea (4,15° N · 9,24° E) ; aucun motif « africain » générique.
+- Le titre « Built in Buea. Built for Africa. Built for the world. » reste en anglais dans
+  les deux langues (signature), le texte est traduit.
+
 ### Technique
 - TypeScript 5.9 : la version 7 n'est pas encore compatible avec le chargement de
   `next.config.ts` par Next.js 15.

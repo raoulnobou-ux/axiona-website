@@ -8,14 +8,17 @@ import { getBranches } from '@/content/branches';
 import { site } from '@/config/site';
 import { pageMetadata } from '@/lib/seo';
 import { Hero } from '@/components/Hero';
-import { FlowDiagram } from '@/components/FlowDiagram';
-import { BranchCard } from '@/components/BranchCard';
+import { SystemFlow } from '@/components/SystemFlow';
+import { VoiceDemo } from '@/components/VoiceDemo';
+import { SolutionFinder } from '@/components/SolutionFinder';
+import { UseCases } from '@/components/UseCases';
+import { Ecosystem } from '@/components/Ecosystem';
+import { BuiltInBuea } from '@/components/BuiltInBuea';
 import { SectionHeading } from '@/components/SectionHeading';
 import { Steps } from '@/components/Steps';
 import { ContactForm } from '@/components/ContactForm';
 import { FounderPortrait } from '@/components/FounderPortrait';
 import { Reveal } from '@/components/Reveal';
-import { Symbol } from '@/components/Symbol';
 import { WhatsAppLink } from '@/components/WhatsAppLink';
 import { WhatsAppIcon } from '@/components/WhatsAppIcon';
 import { LightLines } from '@/components/Illustrations';
@@ -35,8 +38,6 @@ export default async function HomePage({ params }: Props) {
   setRequestLocale(locale);
   const t = getDictionary(locale);
   const branches = getBranches(locale);
-  const featured = branches.filter((b) => b.featured);
-  const others = branches.filter((b) => !b.featured);
   const formBranches = branches.map(({ slug, name }) => ({ slug, name }));
 
   return (
@@ -72,26 +73,14 @@ export default async function HomePage({ params }: Props) {
             <p className="lead lg:col-span-5">{t.flagship.intro}</p>
           </Reveal>
 
-          <Reveal className="mt-12 rounded-card-lg bg-white/60 p-5 ring-1 ring-trait/70 backdrop-blur sm:p-8 lg:p-10">
-            <FlowDiagram
+          <Reveal className="mt-12 rounded-card-lg bg-white/70 p-5 shadow-douce ring-1 ring-trait/70 backdrop-blur sm:p-8 lg:p-10">
+            <SystemFlow
               label={t.flagship.diagramLabel}
               hint={t.flagship.diagramHint}
               nodes={t.flagship.nodes}
               outcomes={t.flagship.outcomes}
             />
           </Reveal>
-
-          <div className="mt-14">
-            <h3 className="h-card">{t.flagship.casesTitle}</h3>
-            <ul className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-              {t.flagship.cases.map((c, i) => (
-                <Reveal as="li" key={c.title} delay={i * 60} className="rounded-card bg-white p-6 shadow-douce">
-                  <p className="font-display text-[1.05rem] font-semibold text-nuit">{c.title}</p>
-                  <p className="mt-2 text-[0.98rem] text-gris">{c.text}</p>
-                </Reveal>
-              ))}
-            </ul>
-          </div>
 
           <div className="mt-12 flex flex-col gap-5 sm:flex-row sm:items-center">
             <WhatsAppLink message={t.common.whatsappDemoMessage} className="btn btn-primary">
@@ -110,37 +99,37 @@ export default async function HomePage({ params }: Props) {
         </div>
       </section>
 
-      {/* 4. Les 8 branches */}
-      <section className="relative overflow-hidden py-20 sm:py-28" aria-labelledby="branches-title">
-        <Symbol className="pointer-events-none absolute -right-24 -top-10 h-[34rem] w-auto opacity-[0.035]" />
-        <div className="container-ax relative">
+      {/* 4. Démonstration de l'agent vocal */}
+      <VoiceDemo t={t.voiceDemo} aiLabel={t.flagship.linkAi} />
+
+      {/* 5. Trouvez votre solution */}
+      <section className="py-20 sm:py-28" aria-labelledby="finder-title">
+        <div className="container-ax">
           <Reveal>
-            <SectionHeading id="branches-title" title={t.branchesSection.title} intro={t.branchesSection.intro} />
+            <SectionHeading id="finder-title" title={t.finder.title} intro={t.finder.intro} />
           </Reveal>
-          <div className="mt-12 grid gap-5 lg:grid-cols-12">
-            {featured.map((b, i) => (
-              <Reveal key={b.slug} delay={i * 80} className={i === 0 ? 'lg:col-span-7' : 'lg:col-span-5'}>
-                <BranchCard
-                  branch={b}
-                  size="large"
-                  statusLabels={t.common.status}
-                  linkLabel={t.common.seeBranch}
-                  flagshipLabel={t.branchesSection.flagshipLabel}
-                />
-              </Reveal>
-            ))}
+          <div className="mt-12">
+            <SolutionFinder
+              t={t.finder}
+              branches={branches.map(({ slug, name, tagline }) => ({ slug, name, tagline }))}
+              whatsappTemplate={t.common.whatsappBranchMessage}
+            />
           </div>
-          <ul className="mt-5 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {others.map((b, i) => (
-              <Reveal as="li" key={b.slug} delay={(i % 3) * 60}>
-                <BranchCard branch={b} statusLabels={t.common.status} linkLabel={t.common.seeBranch} />
-              </Reveal>
-            ))}
-          </ul>
         </div>
       </section>
 
-      {/* 5. Comment ça se passe */}
+      {/* 6. Ce que nous pouvons construire */}
+      <UseCases t={t.useCases} />
+
+      {/* 7. Écosystème : les 8 branches */}
+      <Ecosystem
+        t={t.ecosystem}
+        branches={branches}
+        flagshipLabel={t.branchesSection.flagshipLabel}
+        soonLabel={t.common.status.soon}
+      />
+
+      {/* 8. Comment ça se passe */}
       <section className="bg-brume py-20 sm:py-28" aria-labelledby="process-title">
         <div className="container-ax">
           <Reveal>
@@ -152,7 +141,7 @@ export default async function HomePage({ params }: Props) {
         </div>
       </section>
 
-      {/* 6. Academy & Digital */}
+      {/* 9. Academy & Digital */}
       <section className="py-20 sm:py-28" aria-labelledby="learn-title">
         <div className="container-ax grid gap-12 lg:grid-cols-12">
           <Reveal className="lg:col-span-5">
@@ -196,7 +185,7 @@ export default async function HomePage({ params }: Props) {
         </div>
       </section>
 
-      {/* 7. Le fondateur */}
+      {/* 10. Le fondateur */}
       <section className="bg-brume py-20 sm:py-28" aria-labelledby="founder-title">
         <div className="container-ax grid items-center gap-10 md:grid-cols-12 lg:gap-16">
           <Reveal className="md:col-span-5">
@@ -220,7 +209,10 @@ export default async function HomePage({ params }: Props) {
         </div>
       </section>
 
-      {/* 8. Appel final */}
+      {/* 11. Built in Buea */}
+      <BuiltInBuea t={t.built} />
+
+      {/* 12. Appel final */}
       <section className="on-dark relative isolate overflow-hidden bg-nuit py-20 text-white sm:py-28" aria-labelledby="final-title">
         <div
           aria-hidden="true"
@@ -235,10 +227,18 @@ export default async function HomePage({ params }: Props) {
               {t.finalCta.title}
             </h2>
             <p className="mt-5 text-lg text-white/75">{t.finalCta.text}</p>
-            <WhatsAppLink message={t.common.whatsappMessage} className="btn btn-light mt-8">
-              <WhatsAppIcon />
-              {t.finalCta.whatsapp}
-            </WhatsAppLink>
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <WhatsAppLink message={t.common.whatsappMessage} className="btn btn-light">
+                <WhatsAppIcon />
+                {t.finalCta.whatsapp}
+              </WhatsAppLink>
+              <WhatsAppLink
+                message={t.common.whatsappDemoMessage}
+                className="btn border border-white/30 text-white hover:border-cyan hover:bg-white/5"
+              >
+                {t.finalCta.demo}
+              </WhatsAppLink>
+            </div>
           </div>
           <div className="lg:col-span-7">
             <p className="mb-5 text-sm text-white/60">{t.finalCta.or}</p>

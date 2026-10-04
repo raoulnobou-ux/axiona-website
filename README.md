@@ -27,7 +27,7 @@ npm run typecheck  # TypeScript seul
 
 | Je veux modifier… | Fichier |
 | --- | --- |
-| Les textes du site en **français** | `content/fr.ts` |
+| Les textes du site en **français** (hero, schéma, démo vidéo, « Trouvez votre solution », cas d'usage, écosystème, Built in Buea…) | `content/fr.ts` |
 | Les textes du site en **anglais** | `content/en.ts` (même structure que `fr.ts`, vérifiée par TypeScript) |
 | Une **branche** (nom, ligne descriptive, mots-clés, FAQ, tarifs, statut…) en FR **et** EN | `content/branches.ts` |
 | Lien WhatsApp, e-mail, horaires, réseaux, lien boutique Chariow, lien QuickSign, photo du fondateur | `config/site.ts` |
@@ -79,6 +79,17 @@ WhatsApp/e-mail et une ligne dans Google Sheets.
    - `CONTACT_WEBHOOK_SECRET` (facultatif).
 4. **Deploy**. Puis, dans **Settings → Domains**, ajoutez votre nom de domaine.
 5. Après chaque modification d'une variable `NEXT_PUBLIC_…`, relancez un déploiement.
+
+## Vidéo de démonstration (agent IA vocal)
+
+- Fichiers servis : `public/media/axiona-agent-vocal.mp4` (H.264), `axiona-agent-vocal.webm`
+  (VP9, secours pour les navigateurs sans H.264) et l'affiche `axiona-agent-vocal-poster.webp`.
+- Rien n'est téléchargé au chargement de la page : l'affiche arrive quand la section approche,
+  la vidéo seulement au clic sur Lecture.
+- Pour remplacer la vidéo : déposez les nouveaux fichiers sous les mêmes noms, ou modifiez
+  `VIDEO` dans `components/VoiceDemo.tsx` (chemins, dimensions, durée affichée).
+- Le nettoyage de la vidéo actuelle est reproductible : `scripts/video/build.sh source.mp4`
+  (détails dans DECISIONS.md, section Vidéo).
 
 ## Bilinguisme et SEO
 

@@ -343,3 +343,120 @@
     animation-delay: 0s !important;
   }
 }
+
+/* ------------------------------------------------------------------
+   SystemFlow : circulation de l'information (léger, CSS pur)
+   Cycle de 7,2 s : le paquet traverse chaque liaison (0,9 s), puis les
+   résultats s'allument. Coupé par prefers-reduced-motion.
+   ------------------------------------------------------------------ */
+.sf-link {
+  background: var(--trait);
+}
+.sf-link::after {
+  content: '';
+  position: absolute;
+  width: 9px;
+  height: 9px;
+  margin: -4px 0 0 -4px;
+  border-radius: 999px;
+  background: var(--cyan);
+  box-shadow: 0 0 0 4px rgb(79 209 240 / 0.18), 0 0 14px 2px rgb(79 209 240 / 0.7);
+  opacity: 0;
+  left: 50%;
+  top: 0;
+  animation: sf-travel-y 7.2s linear infinite;
+  animation-delay: calc(var(--i) * 0.9s);
+}
+@media (min-width: 1024px) {
+  .sf-link::after {
+    top: 50%;
+    left: 0;
+    animation-name: sf-travel-x;
+  }
+}
+@keyframes sf-travel-y {
+  0% { top: 0%; opacity: 0; }
+  2% { opacity: 1; }
+  12% { top: 100%; opacity: 1; }
+  13%, 100% { top: 100%; opacity: 0; }
+}
+@keyframes sf-travel-x {
+  0% { left: 0%; opacity: 0; }
+  2% { opacity: 1; }
+  12% { left: 100%; opacity: 1; }
+  13%, 100% { left: 100%; opacity: 0; }
+}
+.sf-node-pulse {
+  opacity: 0;
+  box-shadow: 0 0 0 0 rgb(79 209 240 / 0.55);
+  animation: sf-node 7.2s ease-out infinite;
+  animation-delay: calc(var(--i) * 0.9s - 0.1s);
+}
+@keyframes sf-node {
+  0% { opacity: 1; box-shadow: 0 0 0 0 rgb(79 209 240 / 0.55); }
+  9% { opacity: 1; box-shadow: 0 0 0 10px rgb(79 209 240 / 0); }
+  10%, 100% { opacity: 0; box-shadow: 0 0 0 0 rgb(79 209 240 / 0); }
+}
+.sf-outcome {
+  animation: sf-out 7.2s ease-in-out infinite;
+  animation-delay: calc(4.5s + var(--o) * 0.18s);
+}
+@keyframes sf-out {
+  0%, 100% { background: #fff; border-color: var(--trait); }
+  6%, 26% { background: var(--cyan-pale); border-color: rgb(79 209 240 / 0.7); }
+  34% { background: #fff; border-color: var(--trait); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sf-link::after,
+  .sf-node-pulse {
+    display: none;
+  }
+  .sf-outcome {
+    animation: none;
+  }
+}
+
+/* Écosystème : rails reliant les branches, avec une lumière qui circule lentement */
+.eco-line {
+  background: var(--trait);
+  overflow: hidden;
+}
+.eco-line:not(.absolute) {
+  position: relative;
+}
+.eco-line::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgb(79 209 240 / 0.9), transparent);
+  background-size: 40% 100%;
+  background-repeat: no-repeat;
+  animation: eco-flow 5s linear infinite;
+}
+.eco-line.w-px::after {
+  background: linear-gradient(180deg, transparent, rgb(79 209 240 / 0.9), transparent);
+  background-size: 100% 60%;
+  background-repeat: no-repeat;
+  animation-name: eco-flow-y;
+}
+@keyframes eco-flow {
+  from { background-position: -60% 0; }
+  to { background-position: 160% 0; }
+}
+@keyframes eco-flow-y {
+  from { background-position: 0 -150%; }
+  to { background-position: 0 250%; }
+}
+@keyframes vp-ring {
+  0% { box-shadow: 0 0 0 0 rgb(255 255 255 / 0.55); }
+  100% { box-shadow: 0 0 0 18px rgb(255 255 255 / 0); }
+}
+.vp-ring {
+  animation: vp-ring 2.4s ease-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .eco-line::after,
+  .vp-ring {
+    display: none;
+  }
+}

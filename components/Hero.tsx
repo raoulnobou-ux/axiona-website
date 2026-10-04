@@ -1,5 +1,4 @@
 import type { CSSProperties } from 'react';
-import { Link } from '@/i18n/navigation';
 import type { Dictionary } from '@/content';
 import { Symbol } from './Symbol';
 import { WhatsAppLink } from './WhatsAppLink';
@@ -85,10 +84,21 @@ export function Hero({ t, whatsappMessage }: { t: Dictionary; whatsappMessage: s
               <WhatsAppIcon />
               {t.hero.primary}
             </WhatsAppLink>
-            <Link href="/branches" className="btn btn-ghost">
+            <a href="#ecosysteme" className="btn btn-ghost">
               {t.hero.secondary}
-            </Link>
+            </a>
           </div>
+          <p
+            className="hero-in mt-8 flex flex-wrap items-center gap-x-2 gap-y-1 font-display text-[0.72rem] font-semibold uppercase tracking-[0.12em] text-ocean sm:gap-x-3 sm:text-[0.78rem] sm:tracking-[0.22em]"
+            style={d(1.02)}
+          >
+            {t.hero.pillars.map((p, i) => (
+              <span key={p} className="flex items-center gap-2 sm:gap-3">
+                {i > 0 && <span className="h-1 w-1 rounded-full bg-cyan" aria-hidden="true" />}
+                {p}
+              </span>
+            ))}
+          </p>
         </div>
       </div>
     </section>
