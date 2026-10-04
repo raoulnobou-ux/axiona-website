@@ -10,6 +10,8 @@ import { BranchIcon } from './BranchIcon';
 type Item = {
   kind: string;
   src?: string;
+  width?: number;
+  height?: number;
   title: string;
   text: string;
   tags: string[];
@@ -27,6 +29,10 @@ type Props = {
   };
   branchNames: Record<string, string>;
 };
+
+// Largeur de chaque catégorie sur grand écran (grille de 5 colonnes)
+const SPAN: Record<number, string> = { 2: 'xl:col-span-2', 3: 'xl:col-span-3' };
+const COLS: Record<number, string> = { 1: 'xl:grid-cols-1', 2: 'xl:grid-cols-2', 3: 'xl:grid-cols-3' };
 
 /**
  * « AXIONA en action » : réalisations classées par branche.
@@ -54,16 +60,16 @@ export function Showcase({ t, branchNames }: Props) {
           <p className="lead mt-4">{t.intro}</p>
         </div>
 
-        <div className="mt-12 grid gap-10 lg:grid-cols-4 lg:gap-6">
+        <div className="mt-12 grid gap-10 xl:grid-cols-5 xl:gap-6">
           {t.groups.map((g) => (
-            <div key={g.branch} className={g.items.length > 1 ? 'lg:col-span-2' : ''}>
+            <div key={g.branch} className={SPAN[g.items.length] ?? ''}>
               <h3 className="flex items-center gap-2.5 font-display text-base font-semibold text-nuit">
                 <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-brume">
                   <BranchIcon slug={g.branch as BranchSlug} className="h-5 w-5" />
                 </span>
                 {branchNames[g.branch]}
               </h3>
-              <ul className={`mt-5 grid gap-6 sm:grid-cols-2 ${g.items.length > 1 ? 'lg:grid-cols-2' : 'lg:grid-cols-1'}`}>
+              <ul className={`mt-5 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 ${COLS[g.items.length] ?? ''}`}>
                 {g.items.map((item) => (
                   <li key={item.title} className="flex flex-col overflow-hidden rounded-card border border-trait/80 bg-white shadow-douce">
                     <button
@@ -81,7 +87,11 @@ export function Showcase({ t, branchNames }: Props) {
                         sizes="(min-width: 1024px) 18rem, (min-width: 640px) 45vw, 92vw"
                         quality={85}
                         className={`transition-transform duration-500 group-hover:scale-[1.03] ${
-                          item.kind === 'video' ? 'object-cover object-[center_45%]' : 'object-cover'
+                          item.kind === 'video'
+                            ? 'object-cover object-[center_45%]'
+                            : item.width && item.height && item.width !== item.height
+                              ? 'object-contain p-3'
+                              : 'object-cover'
                         }`}
                       />
                       {item.kind === 'video' ? (
@@ -151,12 +161,13 @@ export function Showcase({ t, branchNames }: Props) {
               <Image
                 src={open.src as string}
                 alt={open.alt}
-                width={1254}
-                height={1254}
+                width={open.width ?? 1200}
+                height={open.height ?? 1200}
                 sizes="(min-width: 1024px) 56rem, 92vw"
                 quality={90}
                 loading="eager"
-                className="block h-auto w-[min(92vw,85vh,56rem)] rounded-card object-contain"
+                style={{ width: `min(92vw, calc(85vh * ${(open.width ?? 1) / (open.height ?? 1)}), 56rem)` }}
+                className="block h-auto rounded-card object-contain"
               />
             )}
             <p className="mt-3 text-center font-display text-sm font-semibold text-white">{open.title}</p>
