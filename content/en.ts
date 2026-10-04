@@ -83,6 +83,61 @@ const en: Dictionary = {
     linkAi: 'AXIONA AI in detail',
     linkAutomation: 'AXIONA Automation in detail',
   },
+  showcase: {
+    title: 'AXIONA in action',
+    intro: 'A selection of our work and training, organised by branch.',
+    enlarge: 'Enlarge',
+    play: 'Watch the video',
+    close: 'Close',
+    groups: [
+      {
+        branch: 'ai',
+        items: [
+          {
+            kind: 'video',
+            title: 'Voice AI agent',
+            text: 'An AI solution that lets businesses automate customer interactions with a voice agent available around the clock.',
+            tags: ['AI Agent', 'Voice AI', 'Automation'],
+            alt: 'Demo of the AXIONA voice AI agent',
+          },
+        ],
+      },
+      {
+        branch: 'academy',
+        items: [
+          {
+            kind: 'image',
+            src: '/realisations/academy-produits-digitaux.jpg',
+            title: 'Create and sell digital products',
+            text: 'Hands-on training on creating, presenting and selling digital products.',
+            tags: ['Training', 'Digital products', 'Entrepreneurship'],
+            alt: 'Poster for the “Create and sell digital products” course (in French)',
+          },
+          {
+            kind: 'image',
+            src: '/realisations/academy-images-ia.jpg',
+            title: 'Creating images with AI',
+            text: 'Hands-on training on creating, enhancing and transforming images with artificial intelligence tools.',
+            tags: ['Generative AI', 'Visual creation', 'Artificial intelligence'],
+            alt: 'Poster for the “Creating images with AI” course (in French)',
+          },
+        ],
+      },
+      {
+        branch: 'creative',
+        items: [
+          {
+            kind: 'image',
+            src: '/realisations/creative-affiches-pro.jpg',
+            title: 'Professional poster design',
+            text: 'Modern advertising visuals for entrepreneurs and businesses, designed to grab attention and present an offer clearly.',
+            tags: ['Graphic design', 'Advertising', 'Visual communication'],
+            alt: 'Example of a professional advertising poster designed by AXIONA Creative (in French)',
+          },
+        ],
+      },
+    ],
+  },
   voiceDemo: {
     badge: 'AXIONA demo',
     title: 'See AXIONA AI in action.',

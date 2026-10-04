@@ -84,6 +84,61 @@ const fr = {
     linkAi: 'AXIONA AI en détail',
     linkAutomation: 'AXIONA Automation en détail',
   },
+  showcase: {
+    title: 'AXIONA en action',
+    intro: 'Quelques réalisations et formations, classées par branche.',
+    enlarge: 'Agrandir',
+    play: 'Voir la vidéo',
+    close: 'Fermer',
+    groups: [
+      {
+        branch: 'ai',
+        items: [
+          {
+            kind: 'video',
+            title: 'Agent IA vocal',
+            text: 'Solution d’intelligence artificielle permettant aux entreprises d’automatiser les interactions avec leurs clients grâce à un agent vocal disponible 24h/24.',
+            tags: ['AI Agent', 'Voice AI', 'Automation'],
+            alt: 'Démonstration de l’agent IA vocal AXIONA',
+          },
+        ],
+      },
+      {
+        branch: 'academy',
+        items: [
+          {
+            kind: 'image',
+            src: '/realisations/academy-produits-digitaux.jpg',
+            title: 'Créer et vendre des produits digitaux',
+            text: 'Formation pratique autour de la création, de la présentation et de la commercialisation de produits digitaux.',
+            tags: ['Formation', 'Produits digitaux', 'Entrepreneuriat'],
+            alt: 'Affiche de la formation « Créer et vendre des produits digitaux »',
+          },
+          {
+            kind: 'image',
+            src: '/realisations/academy-images-ia.jpg',
+            title: 'Création d’images avec l’IA',
+            text: 'Formation pratique consacrée à la création, l’amélioration et la transformation d’images grâce aux outils d’intelligence artificielle.',
+            tags: ['IA générative', 'Création visuelle', 'Intelligence artificielle'],
+            alt: 'Affiche de la formation « Création d’images avec l’IA »',
+          },
+        ],
+      },
+      {
+        branch: 'creative',
+        items: [
+          {
+            kind: 'image',
+            src: '/realisations/creative-affiches-pro.jpg',
+            title: 'Création d’affiches professionnelles',
+            text: 'Conception de visuels publicitaires modernes pour entrepreneurs et entreprises, pensés pour attirer l’attention et présenter clairement une offre.',
+            tags: ['Design graphique', 'Publicité', 'Communication visuelle'],
+            alt: 'Exemple d’affiche publicitaire professionnelle réalisée par AXIONA Creative',
+          },
+        ],
+      },
+    ],
+  },
   voiceDemo: {
     badge: 'Démonstration AXIONA',
     title: 'Voyez l’IA d’AXIONA en action.',

@@ -5,16 +5,9 @@ import { VideoPlayer } from './VideoPlayer';
 import { WhatsAppLink } from './WhatsAppLink';
 import { WhatsAppIcon } from './WhatsAppIcon';
 import { Reveal } from './Reveal';
+import { DEMO_VIDEO } from '@/lib/media';
 
-/** Fichiers produits par scripts/video (voir DECISIONS.md, section Vidéo). */
-const VIDEO = {
-  src: '/media/axiona-agent-vocal.mp4',
-  srcWebm: '/media/axiona-agent-vocal.webm',
-  poster: '/media/axiona-agent-vocal-poster.webp',
-  width: 576,
-  height: 1024,
-  duration: '2:24',
-};
+const VIDEO = DEMO_VIDEO;
 
 const CAP_ICONS = [Ear, AudioLines, Workflow];
 

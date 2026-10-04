@@ -14,6 +14,7 @@ import { SolutionFinder } from '@/components/SolutionFinder';
 import { UseCases } from '@/components/UseCases';
 import { Ecosystem } from '@/components/Ecosystem';
 import { BuiltInBuea } from '@/components/BuiltInBuea';
+import { Showcase } from '@/components/Showcase';
 import { SectionHeading } from '@/components/SectionHeading';
 import { Steps } from '@/components/Steps';
 import { ContactForm } from '@/components/ContactForm';
@@ -128,6 +129,9 @@ export default async function HomePage({ params }: Props) {
         flagshipLabel={t.branchesSection.flagshipLabel}
         soonLabel={t.common.status.soon}
       />
+
+      {/* AXIONA en action : réalisations par branche */}
+      <Showcase t={t.showcase} branchNames={Object.fromEntries(branches.map((b) => [b.slug, b.name]))} />
 
       {/* 8. Comment ça se passe */}
       <section className="bg-brume py-20 sm:py-28" aria-labelledby="process-title">
