@@ -81,6 +81,12 @@ export default async function LocaleLayout({
       contactType: 'customer service',
         email: site.contact.email,
       availableLanguage: ['French', 'English'],
+      hoursAvailable: site.contact.openingHours.map((h) => ({
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: h.days,
+        opens: h.opens,
+        closes: h.closes,
+      })),
     },
     areaServed: ['CM', 'Africa'],
     knowsLanguage: ['fr', 'en'],

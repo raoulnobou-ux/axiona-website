@@ -60,7 +60,11 @@ export default async function ContactPage({ params }: Props) {
               </dt>
               <dd>
                 <p className="text-sm text-gris">{c.hoursTitle}</p>
-                <p className="font-medium text-nuit">{site.contact.hours[locale]}</p>
+                <ul className="font-medium text-nuit">
+                  {site.contact.hours[locale].map((line) => (
+                    <li key={line}>{line}</li>
+                  ))}
+                </ul>
               </dd>
             </div>
             <div className="flex gap-4">

@@ -26,7 +26,17 @@ export const site = {
      */
     whatsappLink: 'https://wa.me/message/DIZC3EZP4MHPN1',
     email: 'raoulnobou@gmail.com',
-    hours: { fr: 'TODO_HORAIRES', en: 'TODO_HOURS' },
+    /** Horaires affichés sur la page contact (heure du Cameroun, WAT). */
+    hours: {
+      fr: ['Lundi – vendredi : 7h30 – 18h30', 'Samedi : 8h – 16h', 'Dimanche : 12h – 17h'],
+      en: ['Monday – Friday: 7:30 am – 6:30 pm', 'Saturday: 8 am – 4 pm', 'Sunday: 12 pm – 5 pm'],
+    },
+    /** Mêmes horaires, format schema.org (données structurées pour Google). */
+    openingHours: [
+      { days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'], opens: '07:30', closes: '18:30' },
+      { days: ['Saturday'], opens: '08:00', closes: '16:00' },
+      { days: ['Sunday'], opens: '12:00', closes: '17:00' },
+    ],
   },
 
   links: {

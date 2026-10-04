@@ -7,7 +7,6 @@ tant qu'elles ne sont pas remplacées.
 
 | Valeur | Où la modifier | Effet tant qu'elle n'est pas renseignée |
 | --- | --- | --- |
-| `TODO_HORAIRES` / `TODO_HOURS` | `config/site.ts` → `contact.hours` | Affiché tel quel sur la page contact |
 | `TODO_FACEBOOK`, `TODO_LINKEDIN`, `TODO_INSTAGRAM`, `TODO_TIKTOK`, `TODO_YOUTUBE` | `config/site.ts` → `socials` | Réseau masqué ; « Nos réseaux arrivent bientôt » si aucun n'est renseigné |
 | `TODO_RCCM` : numéro d'immatriculation | `content/fr.ts` et `content/en.ts` → `legal` | Affiché tel quel dans les mentions légales |
 | Lien public QuickSign | `config/site.ts` → `links.quickSign` | Branche Software en « Bientôt », bouton QuickSign remplacé par « Bientôt disponible » |
@@ -20,6 +19,7 @@ tant qu'elles ne sont pas remplacées.
 | --- | --- | --- |
 | Lien WhatsApp direct | `config/site.ts` → `contact.whatsappLink` | https://wa.me/message/DIZC3EZP4MHPN1 (le numéro n'est affiché nulle part) |
 | E-mail | `config/site.ts` → `contact.email` | raoulnobou@gmail.com |
+| Horaires | `config/site.ts` → `contact.hours` + `openingHours` | Lun–ven 7h30–18h30 · Sam 8h–16h · Dim 12h–17h |
 | Photo du fondateur | `public/brand/founder.webp` (900×1350, fond transparent) | fournie le 2 octobre 2026 |
 
 Les réseaux sociaux ne sont pas encore disponibles : ils restent masqués dans le pied de page
