@@ -30,7 +30,7 @@ export const site = {
   },
 
   links: {
-    chariowStore: 'https://kiqvkzcg.mychariow.online',
+    chariowStore: 'https://coachraoul.mychariow.shop',
     /** Lien public de QuickSign. Vide = la branche Software reste "Bientôt". */
     quickSign: '',
   },
